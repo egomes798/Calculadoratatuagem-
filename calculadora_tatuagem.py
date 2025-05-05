@@ -3,11 +3,11 @@ import streamlit as st
 # Configuração de página
 st.set_page_config(page_title="Calculadora de Tatuagem", page_icon="🖋", layout="centered")
 
-# Logo do estúdio (troque pela URL correta da sua logo hospedada)
+# Logo do estúdio (use o link da sua logo hospedada)
 st.markdown(
     """
     <div style="text-align: center;">
-        <img src="https://i.imgur.com/YOUR_LOGO.png" alt="Egomes.Ink" width="200">
+        <img src="https://i.imgur.com/Bkz48fc.png" alt="Egomes.Ink" width="200">
     </div>
     """,
     unsafe_allow_html=True
@@ -39,16 +39,18 @@ st.markdown(
 
 st.title("Calculadora de Tatuagem")
 
-# Altura da tatuagem
-altura_cm = st.slider("Altura da tatuagem (cm)", 1, 50, 10)
+# Entrada para o tamanho da tatuagem (em cm)
+altura_cm = st.number_input("Altura da tatuagem (em cm)", min_value=1, max_value=50, value=10)
 
-# Definição da base de tamanho
+# Definição da base de tamanho com a nova regra de 25cm ou mais
 if altura_cm <= 5:
     base_tamanho = 150
 elif altura_cm <= 15:
     base_tamanho = 250
-else:
+elif altura_cm <= 25:
     base_tamanho = 400
+else:
+    base_tamanho = 500  # Para tamanhos de 25cm ou mais
 
 # Complexidade
 complexidade = st.selectbox("Complexidade do desenho", ["Simples", "Média", "Alta"])
