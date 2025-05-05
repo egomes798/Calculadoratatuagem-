@@ -1,9 +1,9 @@
 import streamlit as st
 
-# Estilo com cores neutras e toques de roxo
+# Configuração de página
 st.set_page_config(page_title="Calculadora de Tatuagem", page_icon="🖋", layout="centered")
 
-# Logo no topo (substitua o link pela URL da sua logo no GitHub ou Imgur)
+# Logo do estúdio (troque pela URL correta da sua logo hospedada)
 st.markdown(
     """
     <div style="text-align: center;">
@@ -13,6 +13,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# Estilo visual neutro e moderno
 st.markdown(
     """
     <style>
@@ -38,10 +39,10 @@ st.markdown(
 
 st.title("Calculadora de Tatuagem")
 
-# Entrada: altura da tatuagem em cm
+# Altura da tatuagem
 altura_cm = st.slider("Altura da tatuagem (cm)", 1, 50, 10)
 
-# Classificar tamanho
+# Definição da base de tamanho
 if altura_cm <= 5:
     base_tamanho = 150
 elif altura_cm <= 15:
@@ -52,32 +53,32 @@ else:
 # Complexidade
 complexidade = st.selectbox("Complexidade do desenho", ["Simples", "Média", "Alta"])
 fatores_complexidade = {
-    "Simples": 1.5,
-    "Média": 2.0,
-    "Alta": 2.5
+    "Simples": 1.2,
+    "Média": 1.6,
+    "Alta": 2.2
 }
 fator_complexidade = fatores_complexidade[complexidade]
 
 # Local do corpo
 local = st.selectbox("Local do corpo", ["Braço/Perna", "Costas/Costela"])
 fatores_local = {
-    "Braço/Perna": 2.0,
-    "Costas/Costela": 2.6
+    "Braço/Perna": 1.5,
+    "Costas/Costela": 2.2
 }
 fator_local = fatores_local[local]
 
 # Estilo
 estilo = st.selectbox("Estilo", ["Fine line", "Realismo"])
 fatores_estilo = {
-    "Fine line": 2.5,
-    "Realismo": 3.5
+    "Fine line": 1.8,
+    "Realismo": 2.8
 }
 fator_estilo = fatores_estilo[estilo]
 
-# Cálculo final
+# Cálculo do valor final
 valor_final = base_tamanho * fator_complexidade * fator_local * fator_estilo
 
-# Valor mínimo garantido
+# Garantir valor mínimo
 valor_final = max(valor_final, 200)
 
 st.markdown(f"## Valor estimado: **R$ {valor_final:,.2f}**")
