@@ -7,7 +7,7 @@ st.set_page_config(page_title="Calculadora de Tatuagem", page_icon="🖋", layou
 st.markdown(
     """
     <div style="text-align: center;">
-        <img src="https://i.imgur.com/Bkz48fc.png" alt="Egomes.Ink" width="200">
+        <img src="https://imgur.com/a/lILAZuj" alt="Egomes.Ink" width="200">
     </div>
     """,
     unsafe_allow_html=True
